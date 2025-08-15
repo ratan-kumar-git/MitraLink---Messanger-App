@@ -7,8 +7,11 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import ProfilePage from './pages/ProfilePage'
+import Group from './pages/Group';
+import UserProfilePage from './pages/UserProfilePage';
 import { useAuthStore } from './store/useAuthStore'
+import ChatPage from './pages/ChatPage';
+import MyProfile from './pages/MyProfile';
 
 
 const App = () => {
@@ -30,11 +33,17 @@ const App = () => {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={authUser ? <Home /> : <Navigate to="/login" />} />
-        <Route path='/group' element={authUser ? <Home /> : <Navigate to="/login" />} />
-        <Route path='/signup' element={!authUser ? <Signup /> : <Navigate to="/" />} />
-        <Route path='/login' element={!authUser ? <Login /> : <Navigate to="/" />} />
-        <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/signup' element={!authUser ? <Signup /> : <Navigate to="/chat" />} />
+        <Route path='/login' element={!authUser ? <Login /> : <Navigate to="/chat" />} />
+
+        {/* Pages */}
+        <Route path='/chat' element={authUser ? <ChatPage /> : <Navigate to="/login" />} />
+        <Route path='/chat/:userName' element={authUser ? <ChatPage /> : <Navigate to="/login" />} />
+        <Route path='/group' element={authUser ? <Group /> : <Navigate to="/login" />} />
+        <Route path='/myprofile' element={authUser ? <MyProfile /> : <Navigate to="/login" />} />
+        <Route path='/profile' element={authUser ? <UserProfilePage /> : <Navigate to="/login" />} />
+        <Route path='/profile/:userName' element={authUser ? <UserProfilePage /> : <Navigate to="/login" />} />
       </Routes>
       <Toaster />
     </>

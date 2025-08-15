@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import { useChatStore } from "../../store/useChatStore";
+
 import ChatHeader from "./ChatHeader";
-import MessageInput from "../MessageInput";
+import MessageInput from "./MessageInput";
 import MessageSkeleton from "../skelton/MessageSkeleton";
 import { useAuthStore } from "../../store/useAuthStore";
 import { formatMessageTime } from "../../utils/helper";
+import { useChatStore } from "../../store/useChatStore";
 
 const ChatContainer = () => {
   const {
@@ -46,7 +47,7 @@ const ChatContainer = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col overflow-auto bg-[url('chat_bg.webp')] dark:bg-[url('chat_bg_dark.webp')] bg-cover bg-center">
+    <div className="h-full flex flex-col overflow-auto bg-[url('chat_bg.webp')] dark:bg-[url('chat_bg_dark.webp')] bg-cover bg-center">
       <ChatHeader />
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message, idx) => (

@@ -1,32 +1,23 @@
 import React from "react";
-import { useChatStore } from "../store/useChatStore";
-import Sidebar from "../components/Sidebar";
-import ChatContainer from "../components/chat/ChatContainer";
-import NoChatSelected from "../components/chat/NoChatSelected";
+import { Link } from "react-router-dom";
+
 const Home = () => {
-  const { selectedUser } = useChatStore();
   return (
-    <div className="h-screen bg-base-200">
-      <div className="flex items-center justify-center pt-16">
-        <div className="bg-base-100 rounded-lg shadow-cl w-full h-[calc(100vh-64px)]">
-          <div className="flex h-full rounded-lg overflow-hidden">
-            {!selectedUser ? (
-              <>
-                <Sidebar />
-                <NoChatSelected />
-              </>
-            ) : (
-              <>
-                <div className="hidden sm:block">
-                  <Sidebar />
-                </div>
-                <ChatContainer />
-              </>
-            )}
-          </div>
+    <>
+      <div className="h-[calc(100vh-64px)] w-full flex flex-col justify-center items-center mt-16 gap-10 bg-[url('tricolr.webp')] bg-cover bg-center">
+        <h1 className="text-xl font-semibold text-black">Home</h1>
+        <Link
+          to="/chat"
+          className="px-2 py-1 bg-yellow-600 text-zinc-900 font-semibold rounded-md flex items-center justify-center gap-2"
+        >
+          Click hete to Start Your Chat
+        </Link>
+        <div className="text-center text-black">
+          Home Page under construction ... <br />
+          coomming soon !!
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
