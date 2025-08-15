@@ -31,6 +31,10 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
+// // routes
+// app.get("/", (req, res) => {
+//   res.send("Hello from server !!");
+// });
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../Frontend/dist")));
