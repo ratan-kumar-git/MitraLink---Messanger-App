@@ -5,9 +5,9 @@ export const genrateToken = (userId, res) => {
   });
   res.cookie("jwt", token, {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    httpOnly: true,
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // for cross-site cookies in production
-    secure: process.env.NODE_ENV === "production", // only HTTPS in prod
+    httpOnly: true, // prevent XSS attacks cross-site scripting attacks
+    sameSite: "strict", // CSRF protection
+    secure: process.env.NODE_ENV !== "development", // use secure cookies in production
   });
   return token
 };
